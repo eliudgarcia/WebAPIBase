@@ -21,6 +21,22 @@ namespace WebAPIBase
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureAppConfiguration(config => {
+                    //config.AddCommandLine();
+                    config.AddJsonFile("config.json", optional: false, reloadOnChange: true);
                 });
+
+
+        // public static IHostBuilder CreateHostBuilder(string[] args) =>
+        //     Host.CreateDefaultBuilder(args)
+        //         .ConfigureWebHostDefaults(webBuilder =>
+        //         {
+        //             webBuilder
+        //                 .Configure(app => {
+        //                     app.Run(context.Response.WriteAsync(context.Request.Path));
+        //                 });
+        //         })
+                
     }
 }
