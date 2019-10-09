@@ -22,9 +22,9 @@ namespace TestWebApi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-                .ConfigureAppConfiguration(configHost => {
-                    configHost.AddJsonFile("config.json", false, true);
                 });
+                // .ConfigureAppConfiguration(configHost => {
+                //     configHost.AddJsonFile("config.json", false, true);
+                // });
     }
 }
