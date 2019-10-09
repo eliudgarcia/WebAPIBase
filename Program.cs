@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WebAPIBase;
 
-namespace WebAPIBase
+namespace TestWebApi
 {
     public class Program
     {
@@ -17,26 +18,13 @@ namespace WebAPIBase
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)                
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureAppConfiguration(config => {
-                    //config.AddCommandLine();
-                    config.AddJsonFile("config.json", optional: false, reloadOnChange: true);
+                .ConfigureAppConfiguration(configHost => {
+                    configHost.AddJsonFile("config.json", false, true);
                 });
-
-
-        // public static IHostBuilder CreateHostBuilder(string[] args) =>
-        //     Host.CreateDefaultBuilder(args)
-        //         .ConfigureWebHostDefaults(webBuilder =>
-        //         {
-        //             webBuilder
-        //                 .Configure(app => {
-        //                     app.Run(context.Response.WriteAsync(context.Request.Path));
-        //                 });
-        //         })
-                
     }
 }

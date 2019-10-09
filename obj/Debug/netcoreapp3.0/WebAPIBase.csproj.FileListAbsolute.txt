@@ -16,3 +16,5 @@ C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI
 C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI\WebAPIBase\obj\Debug\netcoreapp3.0\WebAPIBase.RazorTargetAssemblyInfo.cache
 C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI\WebAPIBase\obj\Debug\netcoreapp3.0\WebAPIBase.dll
 C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI\WebAPIBase\obj\Debug\netcoreapp3.0\WebAPIBase.pdb
+C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI\WebAPIBase\bin\Debug\netcoreapp3.0\config.json
+C:\Users\oscar.recio\Documents\GALVANIZE\Semana 4\CreateWebAPI\EjercicioCrearAPI\WebAPIBase\bin\Debug\netcoreapp3.0\appsettings.Production.json
