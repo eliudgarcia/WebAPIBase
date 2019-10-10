@@ -8,30 +8,28 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\oscar.recio\\.nuget\\packages\\": {},
+    "C:\\Users\\LGARCIARSN\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oscar.recio\\Documents\\GALVANIZE\\Semana 4\\CreateWebAPI\\EjercicioCrearAPI\\WebAPIBase\\WebAPIBase.csproj",
+      "projectUniqueName": "C:\\Users\\LGARCIARSN\\Desktop\\CLOUD\\new project\\WebAPIBase\\WebAPIBase.csproj",
       "projectName": "WebAPIBase",
-      "projectPath": "C:\\Users\\oscar.recio\\Documents\\GALVANIZE\\Semana 4\\CreateWebAPI\\EjercicioCrearAPI\\WebAPIBase\\WebAPIBase.csproj",
-      "packagesPath": "C:\\Users\\oscar.recio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oscar.recio\\Documents\\GALVANIZE\\Semana 4\\CreateWebAPI\\EjercicioCrearAPI\\WebAPIBase\\obj\\",
+      "projectPath": "C:\\Users\\LGARCIARSN\\Desktop\\CLOUD\\new project\\WebAPIBase\\WebAPIBase.csproj",
+      "packagesPath": "C:\\Users\\LGARCIARSN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\LGARCIARSN\\Desktop\\CLOUD\\new project\\WebAPIBase\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\oscar.recio\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\LGARCIARSN\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
