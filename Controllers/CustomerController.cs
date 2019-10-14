@@ -23,65 +23,71 @@ namespace WebAPIBase.Controllers
             };
         }
         [HttpGet("api/Customer/{id}")]
-        public Customer GetOne(int id){
+        public IActionResult GetOne([FromRoute] long id){
             foreach (Customer customer in this.customers)
             {
                 if (customer.Id==id)
                 {
-                    return customer;
+                    return Ok(customer);
                 }
             }
-            return null;
+            return new NotFoundObjectResult(new {errorMessage="Could not find resource", errorCode=10});
 
         }
 
         [HttpGet ("api/Customer")]
-        public List<Customer> GetAll(){
-            return this.customers;
+        public IActionResult GetAll(){
+            return Ok(this.customers);
 
         }
 
         [HttpPost ("api/Customer")]
-        public Customer Create([FromBody] Customer newCustomer){
+        public IActionResult Create([FromBody] Customer newCustomer){
             newCustomer.Id = customers.Count +1;
-            this.customers.Add(newCustomer);
-            foreach (Customer customer in this.customers)
-            {
-                if (customer.Id== newCustomer.Id)
+            if(ModelState.IsValid){
+                    this.customers.Add(newCustomer);
+                foreach (Customer customer in this.customers)
                 {
-                    return customer;
+                    if (customer.Id== newCustomer.Id)
+                    {
+                        return CreatedAtAction("GetOne", new {Id = customer});
+                    }
                 }
+                return base.StatusCode(500, new {errorMessage="Could not store value"}); 
             }
-            return null;
+           else{
+               return base.ValidationProblem();
+           }
+            
         }
 
         [HttpPut ("api/Customer/{id}")]
-        public string Update([FromRoute] long id, [FromBody] Customer updatedCustomer){
+        public IActionResult Update([FromRoute] long id, [FromBody] Customer updatedCustomer){
             foreach (Customer customer in customers)
             {
-                if (customer.Id==1)
+                if (customer.Id==updatedCustomer.Id)
                 {
                     customer.Firstname=updatedCustomer.Firstname;
                     customer.LastName=updatedCustomer.LastName;
                     customer.Email=updatedCustomer.Email;
                 }
             }
-            return "Updated";
+            return NoContent();
         }
 
         [HttpDelete ("api/Customer/{id}")]
 
-        public string Delete([FromRoute] long id){
+        public IActionResult Delete([FromRoute] long id){
             foreach (Customer customer in customers)
             {
                 if (customer.Id==id)
                 {
                     customers.Remove(customer);
-                    break;
+                    return StatusCode(410);
                 }
             }
             
-            return "Delete";
+            return NotFound();
         }
     }
 }
