@@ -1,17 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
 
-namespace WebAPIBase
+namespace webAPIStarter
 {
     public class Startup
     {
@@ -25,7 +20,8 @@ namespace WebAPIBase
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
+            //services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,11 +31,32 @@ namespace WebAPIBase
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            //new
+            //app.UseMvc();
+
+            app.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapControllers();
+                        });
+
+            app.Map("/hello", app => app.MapWhen(httpContext =>
+                 httpContext.Request.Query.ContainsKey("name"),
+                app => app.Run(async context =>
+                {
+                    var name = context.Request.Query["name"];
+                    await context.Response.WriteAsync("Hello " + name);
+                })));
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseStaticFiles();
 
+            app.UseRouting();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
