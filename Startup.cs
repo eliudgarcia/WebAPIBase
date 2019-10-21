@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Primitives;
+using WebAPIBase.Services;
+using WebAPIStarterData;
 
 namespace webAPIStarter
 {
@@ -21,7 +24,12 @@ namespace webAPIStarter
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options => options.EnableEndpointRouting = false);
-            //services.AddControllers();
+            services.AddTransient<ICustomerService,InMemoryDatabaseCustomerService>();
+            services.AddDbContext<WebAPIStarterContext>(options =>{
+                options.UseSqlite(Configuration.GetConnectionString("WebAPIStarterData"),
+                m=>m.MigrationsAssembly("WebAPIBase"));
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
